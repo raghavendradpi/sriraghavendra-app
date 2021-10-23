@@ -46,9 +46,14 @@
   opacity: 0;
 }
 
-.animation { 
+.animation {
   -webkit-transform: translate3d(0, 0, 0);
+  -webkit-transform-style: preserve-3d;
+  -webkit-backface-visibility: hidden;
   transform: translate3d(0, 0, 0);
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  animation-delay: 0.4s;
 }
 
 ///Frames
