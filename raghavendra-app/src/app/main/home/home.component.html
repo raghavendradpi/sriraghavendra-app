@@ -1,0 +1,60 @@
+<!-- Temple Default Image and Primary content -->
+<main class="home">
+  <div class="home__info pd-lt-lg">
+    <h1 class="heading-primary heading-primary--main">Sri Guru Raghavendra</h1>
+    <h1 class="heading-primary heading-primary--sub">poojyaya raghavendraya satya dharma rataya cha bhajatam kalpa vrkshaya namatam kamadhenave</h1>
+    <div class="grid">
+      <blockquote class="mr-bt-sm">Without right living, right thinking will never come.</blockquote>
+      <!-- <blockquote>
+        Always keep away from people who merely perform miracles without following the shastras and yet call themselves God or guru
+      </blockquote> -->
+      <span class="author"> -by Guru Raghavendra</span>
+    </div>
+
+    <a (click)="onDonate()" class="btn btn-cta btn--animate pd-md">
+      <svg><use xlink:href="assets/svg/sprite.svg#icon-heart"></use></svg> DONATE</a
+    >
+  </div>
+  <div class="home__photo">
+    <img class="animation moveFromBottom" src="assets/images/sriraghavendra-02.png" alt="Sri Raghavendra Image - 1" />
+  </div>
+</main>
+
+<!-- Upcoming EVENTS in temple -->
+<section class="latest-updates">
+  <h2 *ngIf="(eventInfo$ | async)?.length !== 0" class="heading-secondary pd-sm">Latest Updates</h2>
+  <div *ngFor="let event of eventInfo$ | async" class="moveFromBottom card">
+    <div class="event__date">
+      <span> {{ event.day }}</span>
+      <span> {{ event.month }} {{ event.year }}</span>
+    </div>
+    <div class="event__info">
+      <h3 class="heading-tertiary pd-tp-sm">{{ event.title }}</h3>
+      <p class="paragraph">
+        {{ event.description }}
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Temple Information -->
+<section [attr.id]="'about_temple_section'" class="about-temple">
+  <h2 appReveal class="heading-secondary pd-sm">About Temple</h2>
+  <div class="temple__dtl">
+    <img appReveal class="moveFromBottom" src="assets/images/sriraghavendra-04.png" alt="Sri Raghavendra Temple Dharmapuri" />
+    <div class="temple__info mr-tp-md">
+      <p appReveal class="paragraph moveInRight">
+        Sri Raghavendra Swamy Temple is located in Bharathipuram Dharmapuri,constructed on January 1st 1995, we are celebrating Aradhana for past
+        {{ sinceConstruction }} years.
+      </p>
+      <p appReveal class="paragraph moveInRight">
+        The Sacred Mrittika Brindavan was installed by H.H.Sri Sushmindra Tirtha Swamigal then Head of Sri Rayar Mutt, Manthralayam and H.H. Sri
+        Vijnana Nidhi tirtha Swamigal then Head of Mulubagal Sri SriPadaraja Swamigal Mutt.
+      </p>
+      <p appReveal class="paragraph moveInRight">
+        Every year during sri guru raghavedra swamy aradhana festicval we do annadhana to deveotess about 400 to 800 every day. 
+        During covid times as well we conducted annadhana for 2 months for many homeless people and sanitary workers.
+      </p>
+    </div>
+  </div>
+</section>
