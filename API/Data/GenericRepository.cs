@@ -9,6 +9,7 @@ using Google.Apis.Auth.OAuth2;
 using Google.Apis.Services;
 using Google.Apis.Sheets.v4;
 using Google.Apis.Sheets.v4.Data;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 
 namespace API.Data
@@ -18,12 +19,14 @@ namespace API.Data
 
         // SpreadSheet id coming from 
         //https://docs.google.com/spreadsheets/d/1kKCSKUXXPkiJiIE7kM2Pt8zODd9PabYLh6ft3sSG8Zo/edit#gid=0
+        private readonly IWebHostEnvironment _env;
 
         string SpreadsheetId, GeneralSpreadSheetId, AradhanaSpreadSheetId;
         int gid;
         private readonly IConfiguration _config;
-        public GenericRepository(IConfiguration config, IPhotoService photoService)
+        public GenericRepository(IConfiguration config, IPhotoService photoService, IWebHostEnvironment env)
         {
+            _env = env;
             _config = config;
             GeneralSpreadSheetId = _config["GeneralSpreadSheetId"];
             AradhanaSpreadSheetId = _config["AradhanaSpreadSheetId"];
@@ -39,19 +42,44 @@ namespace API.Data
             string ApplicationName = "SriRaghavendra App";
 
             GoogleCredential credential;
-            using (var stream = new FileStream("sriraghavendra-credentials.json", FileMode.Open, FileAccess.Read))
+            var env = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
+            if (env == "Development")
             {
-                credential = GoogleCredential.FromStream(stream)
-                    .CreateScoped(Scopes);
+                // Use connection string from file.
+                using (var stream = new FileStream("sriraghavendra-credentials.json", FileMode.Open, FileAccess.Read))
+                {
+                    credential = GoogleCredential.FromStream(stream)
+                        .CreateScoped(Scopes);
+                }
+                // Create Google Sheets API service.
+                service = new SheetsService(new BaseClientService.Initializer()
+                {
+                    HttpClientInitializer = credential,
+                    ApplicationName = ApplicationName,
+                });
+                return service;
+            }
+            else
+            {
+                // Use connection string from file.
+                using (var stream = new FileStream("/app/heroku_output/sriraghavendra-credentials.json", FileMode.Open, FileAccess.Read))
+                {
+                    credential = GoogleCredential.FromStream(stream)
+                        .CreateScoped(Scopes);
+                }
+                // Create Google Sheets API service.
+                service = new SheetsService(new BaseClientService.Initializer()
+                {
+                    HttpClientInitializer = credential,
+                    ApplicationName = ApplicationName,
+                });
+                return service;
+
+
             }
 
-            // Create Google Sheets API service.
-            service = new SheetsService(new BaseClientService.Initializer()
-            {
-                HttpClientInitializer = credential,
-                ApplicationName = ApplicationName,
-            });
-            return service;
+
+
         }
 
         public async Task<bool> DeleteDataByIdAsync(string sheetName, string id, SheetsService service)
@@ -334,8 +362,8 @@ namespace API.Data
             return 0;
         }
 
-            // whenever any new sheet is created need to update the below methos and 
-            // corresponding the Column length has to be updated the Common class as well with sheet name and range
+        // whenever any new sheet is created need to update the below methos and 
+        // corresponding the Column length has to be updated the Common class as well with sheet name and range
         private string GetRangeBySheetName(string sheetName)
         {
             var range = "";
