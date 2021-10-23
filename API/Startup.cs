@@ -60,6 +60,8 @@ namespace API
 
             ///for serving the static file in the wwwroot with index.html
             ///
+            app.UseDefaultFiles();
+            // To say wwwroot folder content servered as static file
             app.UseStaticFiles();
 
             app.UseEndpoints(endpoints =>
