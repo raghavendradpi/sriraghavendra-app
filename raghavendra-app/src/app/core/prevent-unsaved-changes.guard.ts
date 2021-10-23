@@ -9,7 +9,6 @@ import { IBaseComponent } from './base.component';
 })
 export class PreventUnsavedChangesGuard implements CanDeactivate<IBaseComponent> {
   canDeactivate(component: IBaseComponent): Observable<boolean> | boolean {
-    console.log(component.isFormValid());
     return !component.isFormValid() ? true : confirm('Save your changes otherwise your changes will be lost, still want to navigate then press ok?');
   }
 }

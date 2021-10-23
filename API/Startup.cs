@@ -50,7 +50,9 @@ namespace API
             .AllowAnyMethod()
             /// this allow credential used as it required for SIGNAL R
              .AllowCredentials()
-            .WithOrigins("https://localhost:4200"));
+            .WithOrigins("https://localhost:4200"
+            //,"https://localhost:5001"
+            ));
 
             // After Routing the Authentication after that Authorization
             app.UseAuthentication();
