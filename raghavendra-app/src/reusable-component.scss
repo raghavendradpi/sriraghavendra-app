@@ -340,9 +340,11 @@ blockquote {
 
 //Calculation component
 /// Selection List Calculation
+.withbottom-sticky {
+  bottom: 0;
+}
 .card-selected {
   position: sticky;
-  bottom: 0;
 
   // z-index: $z-index-lg;
   background-color: $color-white;
