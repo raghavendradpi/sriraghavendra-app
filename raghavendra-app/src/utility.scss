@@ -9,7 +9,7 @@
 }
 
 @mixin absquarter {
-  --value: 25%;
+  --value: 18%;
   --neg-value: calc(var(--value) * -1);
   position: absolute;
   top: var(--value);
@@ -46,12 +46,10 @@
   opacity: 0;
 }
 
-.animation {
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-  opacity: 1;
+.animation { 
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
 }
-
 
 ///Frames
 @keyframes moveInLeft {

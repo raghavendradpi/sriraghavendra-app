@@ -41,7 +41,7 @@ export class AppComponent implements OnInit {
   }
 
   ngAfterViewInit() {
-    //  document.addEventListener('click', this.playMusic);
+    document.addEventListener('click', this.playMusic);
   }
 
   private TitleChange() {

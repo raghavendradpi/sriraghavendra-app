@@ -31,6 +31,7 @@
 
     @media only screen and (max-width: $bp-smallest) {
       margin-right: 5rem;
+      transform: translateY(-10px);
     }
   }
 
@@ -215,8 +216,7 @@
   }
 }
 
-.btn-login:hover ,
-
+.btn-login:hover,
 .btn-login:active {
   color: $color-white;
   background-color: map-get($color-primary, dark);

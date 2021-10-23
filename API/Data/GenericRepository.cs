@@ -43,42 +43,20 @@ namespace API.Data
 
             GoogleCredential credential;
             var env = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
-            if (env == "Development")
+
+            // Use connection string from file.
+            using (var stream = new FileStream("sriraghavendra-credentials.json", FileMode.Open, FileAccess.Read))
             {
-                // Use connection string from file.
-                using (var stream = new FileStream("sriraghavendra-credentials.json", FileMode.Open, FileAccess.Read))
-                {
-                    credential = GoogleCredential.FromStream(stream)
-                        .CreateScoped(Scopes);
-                }
-                // Create Google Sheets API service.
-                service = new SheetsService(new BaseClientService.Initializer()
-                {
-                    HttpClientInitializer = credential,
-                    ApplicationName = ApplicationName,
-                });
-                return service;
+                credential = GoogleCredential.FromStream(stream)
+                    .CreateScoped(Scopes);
             }
-            else
+            // Create Google Sheets API service.
+            service = new SheetsService(new BaseClientService.Initializer()
             {
-                // Use connection string from file.
-                using (var stream = new FileStream("/app/heroku_output/sriraghavendra-credentials.json", FileMode.Open, FileAccess.Read))
-                {
-                    credential = GoogleCredential.FromStream(stream)
-                        .CreateScoped(Scopes);
-                }
-                // Create Google Sheets API service.
-                service = new SheetsService(new BaseClientService.Initializer()
-                {
-                    HttpClientInitializer = credential,
-                    ApplicationName = ApplicationName,
-                });
-                return service;
-
-
-            }
-
-
+                HttpClientInitializer = credential,
+                ApplicationName = ApplicationName,
+            });
+            return service;
 
         }
 
