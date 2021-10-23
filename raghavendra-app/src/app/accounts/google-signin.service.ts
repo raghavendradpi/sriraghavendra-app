@@ -30,6 +30,7 @@ export class GoogleSigninService {
     private http: HttpClient
   ) {}
 
+  //Google Login Using the Google Provider
   loginWithGoogle(): void {
     this.socialAuthService
       .signIn(GoogleLoginProvider.PROVIDER_ID)
