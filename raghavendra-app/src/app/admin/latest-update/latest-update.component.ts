@@ -57,7 +57,7 @@ export class LatestUpdateComponent implements OnInit, IBaseComponent {
     formData.append('eventDate', this.eventForm.get('eventDate').value);
     this.formSubmitted = true;
     this.subscription = this.adminService.createLatestEvents(formData).subscribe((status) => {
-      this.formSubmitted = false;
+      this.resetForm();
       status.statusCode === 0 ? this.toastrService.success(status.messageInfo) : this.toastrService.error(status.messageInfo);
     });
   }

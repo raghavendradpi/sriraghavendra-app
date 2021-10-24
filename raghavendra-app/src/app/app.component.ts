@@ -27,6 +27,7 @@ export class AppComponent implements OnInit {
   // For Song to generate randomly this logic is written for 2 songs
   rndInt = Math.floor(Math.random() * 2) + 1;
   randomSong: string;
+  initialPlay = 0;
 
   ngOnInit(): void {
     this.randomSong = `assets/audio/song${this.rndInt}.mp3`;
@@ -40,10 +41,6 @@ export class AppComponent implements OnInit {
     this.TitleChange();
   }
 
-  ngAfterViewInit() {
-    document.addEventListener('click', this.playMusic);
-  }
-
   private TitleChange() {
     this.router.events.pipe(filter((event) => event instanceof NavigationEnd)).subscribe(() => {
       var rt = this.getChild(this.activatedRoute);
@@ -54,9 +51,11 @@ export class AppComponent implements OnInit {
   }
 
   // To play the music
-  private playMusic() {
-    (<HTMLAudioElement>document.getElementById('audio')).play();
-    document.removeEventListener('click', this.playMusic);
+  playMusic() {
+    if (this.initialPlay === 0) {
+      this.initialPlay++;
+      (<HTMLAudioElement>document.getElementById('audio')).play();
+    }
   }
 
   private getChild(activatedRoute: ActivatedRoute) {

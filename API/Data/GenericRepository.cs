@@ -9,7 +9,6 @@ using Google.Apis.Auth.OAuth2;
 using Google.Apis.Services;
 using Google.Apis.Sheets.v4;
 using Google.Apis.Sheets.v4.Data;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 
 namespace API.Data
@@ -19,14 +18,14 @@ namespace API.Data
 
         // SpreadSheet id coming from 
         //https://docs.google.com/spreadsheets/d/1kKCSKUXXPkiJiIE7kM2Pt8zODd9PabYLh6ft3sSG8Zo/edit#gid=0
-        private readonly IWebHostEnvironment _env;
+ 
 
         string SpreadsheetId, GeneralSpreadSheetId, AradhanaSpreadSheetId;
         int gid;
         private readonly IConfiguration _config;
-        public GenericRepository(IConfiguration config, IPhotoService photoService, IWebHostEnvironment env)
+        public GenericRepository(IConfiguration config, IPhotoService photoService )
         {
-            _env = env;
+ 
             _config = config;
             GeneralSpreadSheetId = _config["GeneralSpreadSheetId"];
             AradhanaSpreadSheetId = _config["AradhanaSpreadSheetId"];
@@ -239,7 +238,6 @@ namespace API.Data
                     else if (category == "phone" && searchValue == Convert.ToString(row[3]).ToLower()) // search by phone
                     {
                         CreateDataList<T>(dataList, row, header);
-                        break;
                     }
 
                     else if (category == "city" && searchValue == Convert.ToString(row[5]).ToLower()) // search by city

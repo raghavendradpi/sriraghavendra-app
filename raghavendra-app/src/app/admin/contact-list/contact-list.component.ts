@@ -21,7 +21,6 @@ export class ContactListComponent implements OnInit {
     { key: 'FullName', value: 'name' },
     { key: 'Email Id', value: 'email' },
     { key: 'Mobile Number', value: 'phone' },
-    { key: 'Year', value: 'year' },
     { key: 'City', value: 'city' },
   ];
 

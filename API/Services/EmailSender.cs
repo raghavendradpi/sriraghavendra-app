@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.IO;
 using API.Entities;
@@ -71,7 +72,12 @@ namespace API.Services
         private static string ReadFile<T>(T message)
         {
             string templatedata = "";
+            var env = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
             string filePath = Path.Combine(Directory.GetCurrentDirectory(), "Emailtemplates");
+            if (env == "Production")
+            {
+                filePath = Path.Combine(Directory.GetCurrentDirectory(), @"../", "Emailtemplates");
+            }
             var type = typeof(T);
             string AmountReceivedValue, SevaNameValue, AddressValue, FullNameValue;
             var TypeValue = type.GetProperty("Type").GetValue(message);

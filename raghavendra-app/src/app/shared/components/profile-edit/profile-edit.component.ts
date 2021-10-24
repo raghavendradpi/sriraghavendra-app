@@ -121,6 +121,8 @@ export class ProfileEditComponent implements OnInit, IBaseComponent {
 
   resetForm() {
     this.contactForm.reset();
+    this.consolidatedList = [];
+    this.getTotal = null;
     this.formSubmitted = false;
   }
 
