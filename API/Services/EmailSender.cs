@@ -76,7 +76,7 @@ namespace API.Services
             string filePath = Path.Combine(Directory.GetCurrentDirectory(), "Emailtemplates");
             if (env == "Production")
             {
-                filePath = Path.Combine(Directory.GetCurrentDirectory(), @"../", "Emailtemplates");
+                filePath = Path.Combine(Directory.GetCurrentDirectory(), @"../API/", "Emailtemplates");
             }
             var type = typeof(T);
             string AmountReceivedValue, SevaNameValue, AddressValue, FullNameValue;
