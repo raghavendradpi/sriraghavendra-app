@@ -1,1 +1,37 @@
- 
+@import 'styles';
+
+///////////// navigation of Guru
+.side-nav {
+  position: fixed;
+  left: 0;
+  width: 300px;
+  background-color: $color-accent-red;
+  height: 100vh;
+  color: white;
+  padding: 1rem;
+
+  &__navigation {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__list {
+    padding: 1rem;
+  }
+}
+
+//////////////About Main Section
+.about-gurukal {
+  display: flex;
+  position: relative;
+
+  /// Information of the Sri Rayuru
+
+  &__info {
+    margin-left: 300px;
+    padding-left: 2rem;
+  }
+}
+
+.section__about {
+}

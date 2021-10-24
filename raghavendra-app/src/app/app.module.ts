@@ -23,20 +23,20 @@ import { HomeComponent } from './main/home/home.component';
 import { ContactComponent } from './main/contact/contact.component';
 import { SevaComponent } from './main/seva/seva.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AboutComponent } from './main/about/about.component';
 
 @NgModule({
-  declarations: [AppComponent, GoogleSigninComponent, RevealDirective, NavBarComponent, SevaComponent, HomeComponent, ContactComponent],
-  imports: [
-    AppRoutingModule,
-    BrowserModule,
-    BrowserAnimationsModule,
-    HttpClientModule,
-    ReactiveFormsModule,
-    FormsModule,
-    CoreModule,
-    SharedModule,
- 
+  declarations: [
+    AppComponent,
+    GoogleSigninComponent,
+    RevealDirective,
+    NavBarComponent,
+    SevaComponent,
+    HomeComponent,
+    ContactComponent,
+    AboutComponent,
   ],
+  imports: [AppRoutingModule, BrowserModule, BrowserAnimationsModule, HttpClientModule, ReactiveFormsModule, FormsModule, CoreModule, SharedModule],
   providers: [
     SocialAuthService,
     {

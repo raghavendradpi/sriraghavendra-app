@@ -1,1 +1,27 @@
- 
+<div class="about-gurukal">
+  <section class="side-nav">
+    <ul class="side-nav__navigation">
+      <li [routerLink]="'.'" [fragment]="data.id" *ngFor="let data of info" class="side-nav__list">
+        <a class="side-nav__item">{{ data.title }}</a>
+      </li>
+    </ul>
+  </section>
+
+  <div class="about-gurukal__info">
+    <section class="section__about pd-bt-lg" *ngFor="let data of info" [attr.id]="data.id">
+      <h3 class="heading-secondary text-align-left">{{ data.title }}</h3>
+      <p class="paragraph">
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Incidunt saepe exercitationem praesentium modi repudiandae dicta consectetur ab
+        veritatis quaerat quibusdam quod, dolorem fugit temporibus voluptas magni ad odio, adipisci doloremque!
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Incidunt saepe exercitationem praesentium modi repudiandae dicta consectetur ab
+        veritatis quaerat quibusdam quod, dolorem fugit temporibus voluptas magni ad odio, adipisci doloremque!
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Incidunt saepe exercitationem praesentium modi repudiandae dicta consectetur ab
+        veritatis quaerat quibusdam quod, dolorem fugit temporibus voluptas magni ad odio, adipisci doloremque!
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Incidunt saepe exercitationem praesentium modi repudiandae dicta consectetur ab
+        veritatis quaerat quibusdam quod, dolorem fugit temporibus voluptas magni ad odio, adipisci doloremque!
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Incidunt saepe exercitationem praesentium modi repudiandae dicta consectetur ab
+        veritatis quaerat quibusdam quod, dolorem fugit temporibus voluptas magni ad odio, adipisci doloremque!
+      </p>
+    </section>
+  </div>
+</div>

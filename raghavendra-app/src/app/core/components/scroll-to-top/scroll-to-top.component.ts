@@ -9,8 +9,8 @@ import { Component, HostListener, Inject, OnInit } from '@angular/core';
 export class ScrollToTopComponent implements OnInit {
   windowScrolled: boolean;
   // DOCUMENT IS Angular direct reference to document object of the html
-  constructor(@Inject(DOCUMENT) private document: Document) { }
-  
+  constructor(@Inject(DOCUMENT) private document: Document) {}
+
   // Host Listener is to listen to Scroll events.
   @HostListener('window:scroll', [])
   onWindowScroll() {
@@ -21,13 +21,14 @@ export class ScrollToTopComponent implements OnInit {
     }
   }
   scrollToTop() {
-    (function smoothscroll() {
-      var currentScroll = document.documentElement.scrollTop || document.body.scrollTop;
-      if (currentScroll > 0) {
-        window.requestAnimationFrame(smoothscroll);
-        window.scrollTo(0, currentScroll - currentScroll / 8);
-      }
-    })();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    // (function smoothscroll() {
+    //   var currentScroll = document.documentElement.scrollTop || document.body.scrollTop;
+    //   if (currentScroll > 0) {
+    //   //  window.requestAnimationFrame(smoothscroll);
+    //     window.scrollTo(0, currentScroll - currentScroll / 8);
+    //   }
+    // })();
   }
 
   ngOnInit(): void {}

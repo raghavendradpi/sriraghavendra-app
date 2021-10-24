@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes, RouterModule, ExtraOptions } from '@angular/router';
 import { NotFoundComponent } from '@app-corecmp/not-found/not-found.component';
 import { AdminGuard } from './core/admin.guard';
 import { AboutComponent } from './main/about/about.component';
@@ -7,6 +7,13 @@ import { ContactComponent } from './main/contact/contact.component';
 import { HomeComponent } from './main/home/home.component';
 import { SevaComponent } from './main/seva/seva.component';
 import { ProfileEditComponent } from './shared/components/profile-edit/profile-edit.component';
+
+/// For scrolling using Fragments in the same page 
+const routerOptions: ExtraOptions = {
+  scrollPositionRestoration: "enabled",
+  anchorScrolling: "enabled",
+  scrollOffset: [0, 64]
+};
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent, data: { title: 'Home Page - Sri Raghavendra Swamy Temple Dharmapuri' } },
@@ -25,7 +32,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes,routerOptions)],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
