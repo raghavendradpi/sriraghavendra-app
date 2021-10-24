@@ -1,5 +1,10 @@
 @import 'styles';
 
+.text-scroll {
+  background-color: $color-bg-gray-20;
+  font-size: $medium-font-size;
+  display: block;
+}
 //Home section
 .home {
   display: grid;

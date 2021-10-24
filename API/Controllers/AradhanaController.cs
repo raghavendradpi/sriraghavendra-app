@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using API.DTO;
 using API.Entities;
@@ -102,7 +103,8 @@ namespace API.Controllers
             {
                 var service = _genericRepository.GoogleServiceIntialise();
                 var data = await _genericRepository.GetListAsync<AradhanaDetails>(sheetName, service, searchValue, category);
-                return data;
+                var data1 = data.OrderByDescending(d => d.CreatedDate).ToList();
+                return data1;
             }
             return BadRequest("Provide Proper Search Criteria");
 

@@ -16,6 +16,7 @@ export class RevealDirective {
       this.renderer.addClass(this.elementRef.nativeElement, 'animation');
     } else {
       this.renderer.removeClass(this.elementRef.nativeElement, 'animation');
+      
     }
   }
 }

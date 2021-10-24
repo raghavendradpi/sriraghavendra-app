@@ -22,6 +22,7 @@ namespace API.Entities
         [Range(0.1, 100000, ErrorMessage = "Please proceed with Normal Bank Transaction To avoid Extra Charge")]
         public int Amount { get; set; }
         public string Year { get; set; } = DateTime.Now.Year.ToString();
+        public DateTime CreatedDate { get; set; } = DateTime.Now;
 
     }
 }
