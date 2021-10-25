@@ -18,14 +18,14 @@ namespace API.Data
 
         // SpreadSheet id coming from 
         //https://docs.google.com/spreadsheets/d/1kKCSKUXXPkiJiIE7kM2Pt8zODd9PabYLh6ft3sSG8Zo/edit#gid=0
- 
+
 
         string SpreadsheetId, GeneralSpreadSheetId, AradhanaSpreadSheetId;
         int gid;
         private readonly IConfiguration _config;
-        public GenericRepository(IConfiguration config, IPhotoService photoService )
+        public GenericRepository(IConfiguration config, IPhotoService photoService)
         {
- 
+
             _config = config;
             GeneralSpreadSheetId = _config["GeneralSpreadSheetId"];
             AradhanaSpreadSheetId = _config["AradhanaSpreadSheetId"];
@@ -365,6 +365,12 @@ namespace API.Data
             {
                 SpreadsheetId = GeneralSpreadSheetId;
                 range = CommonItem.UserClarificationrange;
+            }
+
+            else if (sheetName.ToLower().Contains(CommonItem.AboutSheet))
+            {
+                SpreadsheetId = GeneralSpreadSheetId;
+                range = CommonItem.Aboutrange;
             }
 
             else if (sheetName.ToLower().Contains(CommonItem.AradhanaSheet))

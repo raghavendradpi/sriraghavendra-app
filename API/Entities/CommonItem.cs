@@ -9,7 +9,6 @@ namespace API.Entities
         public static readonly string ContactSheet = "contact-info";
         public static readonly string Contactrange = $"{ContactSheet}!" + "A:I";
 
-
         public static readonly string LatestUpdateSheet = "latest-update";
         // private static readonly char LatestUpdateColumn = 'F';
         public static readonly string LatestUpdaterange = $"{LatestUpdateSheet}!" + "A:F";
@@ -25,6 +24,9 @@ namespace API.Entities
 
         public static readonly string UserClarificationSheet = "clarification-list";
         public static readonly string UserClarificationrange = $"{UserClarificationSheet}!" + "A:F";
+
+        public static readonly string AboutSheet = "about";
+        public static readonly string Aboutrange = $"{AboutSheet}!" + "A:C";
 
         public enum EmailFlow
         {

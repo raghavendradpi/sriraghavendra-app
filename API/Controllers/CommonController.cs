@@ -30,7 +30,7 @@ namespace API.Controllers
             _genericRepository = genericRepository;
         }
 
-     // Getting the LATEST update of the upcoming events in the temple
+        // Getting the LATEST update of the upcoming events in the temple
         [HttpGet("latest-update")]
         public async Task<List<LatestEvents>> GetLatestUpdateAsync()
         {
@@ -40,6 +40,17 @@ namespace API.Controllers
             data = data.OrderByDescending(l => l.EventDate).ToList();
             return data;
         }
+
+
+        [HttpGet("about-guru")]
+        public async Task<List<AboutGuru>> GetAboutGuruAsync()
+        {
+            string sheetName = CommonItem.AboutSheet;
+            var service = _genericRepository.GoogleServiceIntialise();
+            var data = await _genericRepository.GetListAsync<AboutGuru>(sheetName, service);
+            return data;
+        }
+
         //Clarifications of the users.
         [HttpPost("clarification")]
         public async Task<ActionResult> CreateLatestNewsAsync(UserClarificationDTO userClarificationDTO)
@@ -55,7 +66,7 @@ namespace API.Controllers
         }
 
         // Getting the List of Questions or suggestions posted by the user
-        [HttpGet("clarification")]  
+        [HttpGet("clarification")]
         public async Task<List<UserClarificationDTO>> GetUserClarificationsAsync()
         {
             string sheetName = CommonItem.UserClarificationSheet;

@@ -1,12 +1,27 @@
 @import 'styles';
 
+//////////////About Main Section
+.about-gurukal {
+  --space: 25rem;
+  display: flex;
+  position: relative;
+
+  /// Information of the Sri Rayuru
+
+  &__info {
+    margin-left: var(--space);
+    padding-left: 2rem;
+  }
+}
+
 ///////////// navigation of Guru
 .side-nav {
   position: fixed;
   left: 0;
-  width: 300px;
+  max-width: var(--space);
   background-color: $color-accent-red;
-  height: 100vh;
+  height: 80vh;
+  display: block;
   color: white;
   padding: 1rem;
 
@@ -17,19 +32,6 @@
 
   &__list {
     padding: 1rem;
-  }
-}
-
-//////////////About Main Section
-.about-gurukal {
-  display: flex;
-  position: relative;
-
-  /// Information of the Sri Rayuru
-
-  &__info {
-    margin-left: 300px;
-    padding-left: 2rem;
   }
 }
 

@@ -72,3 +72,9 @@ export interface ISevaList {
   description: string;
   amount: number | null;
 }
+
+export interface IAboutTemple {
+  id: string;
+  title: string;
+  description: string;
+}
