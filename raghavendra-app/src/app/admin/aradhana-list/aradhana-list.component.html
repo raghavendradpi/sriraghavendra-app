@@ -13,7 +13,7 @@
     <input [(ngModel)]="searchObject.value" type="text" class="input-text" />
   </div>
   <a (click)="onSearch()" class="btn btn-cta mr-lt-sm flex-box">
-    <svg class="arrow-submit">
+    <svg>
       <use xlink:href="assets/svg/sprite.svg#icon-search"></use>
     </svg>
     search</a
@@ -59,9 +59,10 @@
 <!-- Admin User Email and Password to be provided to send the email -->
 <div class="email-card" [ngClass]="{ active: isFormActive }">
   <h2 class="heading-tertiary">Email Content</h2>
-  <span (click)="onclose()"><svg class="close-button">
-    <use xlink:href="assets/svg/sprite.svg#icon-cancel-circle"></use>
-  </svg></span>
+  <span (click)="onclose()"
+    ><svg class="close-button">
+      <use xlink:href="assets/svg/sprite.svg#icon-cancel-circle"></use></svg
+  ></span>
   <form #contactForm="ngForm" class="email-card__form" (ngSubmit)="onSendEmail(contactForm)">
     <!-- <label for="body">Email Content</label>
     <textarea required class="input-text" rows="5" name="body" ngModel></textarea> -->

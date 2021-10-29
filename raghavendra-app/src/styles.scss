@@ -58,7 +58,7 @@ h3 {
 
 .heading-primary {
   color: inherit;
-  font-weight: 900;
+  font-weight: 600;
   margin-bottom: 2rem;
 
   @media only screen and (max-width: $bp-largest) {
@@ -67,19 +67,17 @@ h3 {
 
   &--main {
     display: block;
-    font-size: $larger-font-size;
-    font-weight: bolder;
+    font-size: $largest-font-size;
     text-transform: uppercase;
-    animation: moveInLeft 1s ease-out;
+    animation: moveInLeft 1s cubic-bezier(0.42, 0, 0.38, 0.66);
   }
 
   &--sub {
     display: block;
     font-size: $medium-font-size;
     text-transform: capitalize;
-    font-weight: 600;
     color: $color-text-gray-80;
-    animation: moveInRight 1s ease-out;
+    animation: moveInRight 1s cubic-bezier(0.42, 0, 0.38, 0.66);
   }
 }
 
@@ -98,7 +96,7 @@ h3 {
 
   &:hover,
   &:active {
-    transform: scale(1.01) skew(15deg, 2deg);
+    transform: scale(1.05) translateY(-2px);
   }
 }
 
