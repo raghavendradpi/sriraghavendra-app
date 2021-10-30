@@ -91,7 +91,7 @@
       margin-top: 1rem;
     }
 
-    &:hover::after {
+    &:not(.router-active):hover::after {
       width: 100%;
     }
   }
@@ -102,6 +102,11 @@
     color: inherit;
     display: flex;
   }
+}
+
+.router-active {
+  background-color: $color-bg-gray-30;
+
 }
 
 //Signed In section

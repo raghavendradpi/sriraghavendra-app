@@ -24,6 +24,7 @@ import { ContactComponent } from './main/contact/contact.component';
 import { SevaComponent } from './main/seva/seva.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AboutComponent } from './main/about/about.component';
+import { GalleryComponent } from './main/gallery/gallery.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { AboutComponent } from './main/about/about.component';
     HomeComponent,
     ContactComponent,
     AboutComponent,
+    GalleryComponent,
   ],
   imports: [AppRoutingModule, BrowserModule, BrowserAnimationsModule, HttpClientModule, ReactiveFormsModule, FormsModule, CoreModule, SharedModule],
   providers: [

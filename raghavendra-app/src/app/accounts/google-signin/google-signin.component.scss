@@ -21,8 +21,13 @@
   align-items: center;
   z-index: $z-index-md-next;
   transition: transform 0.3s;
-  @include absquarter;
+  @include abscenter;
   position: fixed;
+
+  @media only screen and (max-width : $bp-small){
+    @include absquarter;
+  }
+
 }
 
 .btn-google:hover,
