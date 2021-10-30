@@ -52,14 +52,6 @@ namespace API.Controllers
             string sheetName = CommonItem.LatestUpdateSheet;
             var service = _genericRepository.GoogleServiceIntialise();
             var latestEvents = _mapper.Map<LatestEventsDTO, LatestEvents>(latestEventsDTO);
-            if (latestEventsDTO?.Image != null && latestEventsDTO.Image.Length > 0)
-            {
-                var uploadResult = await _photoService.AddPhotoAsync(latestEventsDTO.Image);
-                latestEvents.ImageUrl = uploadResult.SecureUrl.AbsoluteUri;
-                latestEvents.PublicId = uploadResult.PublicId;
-                if (uploadResult.Error != null) return BadRequest(uploadResult.Error.Message);
-            }
-
             // creating the record in the Googlesheets
             var status = await _genericRepository.CreateDataAsync<LatestEvents>(sheetName, latestEvents, service);
             if (status) return Ok(new StatusDTO(Status.Success, StatusDTO.GetDescription((MessageData)(short)MessageData.Created)));
