@@ -66,6 +66,14 @@ export interface ILatestEventsDtl extends ILatestEvents {
   year: number;
 }
 
+
+export interface IUploadPhoto {
+  title: string;
+  eventDate: string;
+  imageUrl: string;
+}
+
+
 // List of Sevas performed
 export interface ISevaList {
   sevaName: string;

@@ -373,6 +373,12 @@ namespace API.Data
                 range = CommonItem.Aboutrange;
             }
 
+            else if (sheetName.ToLower().Contains(CommonItem.UploadPhotoSheet))
+            {
+                SpreadsheetId = GeneralSpreadSheetId;
+                range = CommonItem.UploadPhotorange;
+            }
+
             else if (sheetName.ToLower().Contains(CommonItem.AradhanaSheet))
             {
                 SpreadsheetId = AradhanaSpreadSheetId;

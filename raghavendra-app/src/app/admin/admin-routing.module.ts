@@ -8,6 +8,7 @@ import { ProfileEditComponent } from '../shared/components/profile-edit/profile-
 import { LatestUpdateComponent } from './latest-update/latest-update.component';
 import { ClarificationComponent } from './clarification/clarification.component';
 import { PreventUnsavedChangesGuard } from '@app/core/prevent-unsaved-changes.guard';
+import { UploadPhotoComponent } from './upload-photo/upload-photo.component';
 
 const routes: Routes = [
   {
@@ -17,7 +18,6 @@ const routes: Routes = [
       {
         path: '',
         redirectTo: 'contact',
-        
       },
       {
         path: 'contact',
@@ -50,6 +50,11 @@ const routes: Routes = [
         path: 'latest-events',
         canDeactivate: [PreventUnsavedChangesGuard],
         component: LatestUpdateComponent,
+      },
+      {
+        path: 'upload-photo',
+        canDeactivate: [PreventUnsavedChangesGuard],
+        component: UploadPhotoComponent,
       },
       {
         path: 'clarification',

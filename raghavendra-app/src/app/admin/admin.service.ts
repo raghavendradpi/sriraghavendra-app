@@ -28,6 +28,10 @@ export class AdminService {
     return this.http.post<IResult>(this.API_URL + 'aradhana/latest-update', formData);
   }
 
+  uploadingPhoto(formData: any) {
+    return this.http.post<IResult>(this.API_URL + 'contact/upload-photo', formData);
+  }
+
   getUserClarification() {
     return this.http.get<IUserQuery[]>(this.API_URL + 'contact/clarification');
   }

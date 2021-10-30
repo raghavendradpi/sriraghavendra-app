@@ -63,9 +63,13 @@
   color: transparent;
 }
 
-.form-label-group input:not(:placeholder-shown),
-.form-label-group textarea:not(:placeholder-shown) {
+.form-label-group input:not(:placeholder-shown) {
   padding-top: 1.25rem;
+  padding-bottom: 0.25rem;
+}
+
+.form-label-group textarea:not(:placeholder-shown) {
+  padding-top: 2rem;
   padding-bottom: 0.25rem;
 }
 

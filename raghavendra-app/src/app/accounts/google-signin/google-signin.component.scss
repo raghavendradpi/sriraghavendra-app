@@ -24,18 +24,21 @@
   @include abscenter;
   position: fixed;
 
-  @media only screen and (max-width : $bp-small){
+  @media only screen and (max-width: $bp-small) {
     @include absquarter;
   }
-
 }
 
 .btn-google:hover,
 .btn-google:active {
-  transform: translate(-25%, -25%) scale(1.1);
+  transform: translate(-50%, -50%) scale(1.1);
   color: map-get($color-primary, dark);
   border: none;
   background-color: $color-white;
+
+  @media only screen and (max-width: $bp-small) {
+    transform: translate(-18%, -18%) scale(1.1);
+  }
 }
 
 svg {

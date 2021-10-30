@@ -20,8 +20,10 @@ namespace API.Controllers
         private readonly IMapper _mapper;
         private readonly IHttpContextAccessor _contextAccessor;
         private readonly IEmailSender _emailSender;
+        private readonly IPhotoService _photoService;
         public ContactController(IGenericRepository genericRepository,
                 IMapper mapper,
+                IPhotoService photoService,
          IHttpContextAccessor contextAccessor
         , IEmailSender emailSender)
         {
@@ -29,6 +31,7 @@ namespace API.Controllers
             _contextAccessor = contextAccessor;
             _genericRepository = genericRepository;
             _mapper = mapper;
+            _photoService = photoService;
         }
 
         // Getting the contacts of List of users contributing for Aradhana and other cause
@@ -75,6 +78,28 @@ namespace API.Controllers
                 return data;
             }
             return BadRequest("Provide Proper Search Criteria");
+
+        }
+
+        // Upcoming events happening the temple
+        [HttpPost("upload-photo")]
+        public async Task<ActionResult> UploadPhoto([FromForm] PhotoDto latestEventsDTO)
+        {
+            string sheetName = CommonItem.UploadPhotoSheet;
+            var service = _genericRepository.GoogleServiceIntialise();
+            var latestEvents = _mapper.Map<PhotoDto, Photo>(latestEventsDTO);
+            if (latestEventsDTO?.Image != null && latestEventsDTO.Image.Length > 0)
+            {
+                var uploadResult = await _photoService.AddPhotoAsync(latestEventsDTO.Image);
+                latestEvents.ImageUrl = uploadResult.SecureUrl.AbsoluteUri;
+                latestEvents.PublicId = uploadResult.PublicId;
+                if (uploadResult.Error != null) return BadRequest(uploadResult.Error.Message);
+            }
+
+            // creating the record in the Googlesheets
+            var status = await _genericRepository.CreateDataAsync<Photo>(sheetName, latestEvents, service);
+            if (status) return Ok(new StatusDTO(Status.Success, StatusDTO.GetDescription((MessageData)(short)MessageData.Created)));
+            return Ok(new StatusDTO(Status.Failure, StatusDTO.GetDescription((MessageData)(short)MessageData.NotProcessed)));
 
         }
 

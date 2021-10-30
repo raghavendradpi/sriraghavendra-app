@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '@app-environments/environment';
-import { IAboutTemple, ILatestEvents, ILatestEventsDtl, IResult, ISevaList, IUserQuery } from '@app/models/IUser';
+import { IAboutTemple, ILatestEvents, ILatestEventsDtl, IResult, ISevaList, IUploadPhoto, IUserQuery } from '@app/models/IUser';
 import { Observable, of } from 'rxjs';
 import { map, shareReplay, tap } from 'rxjs/operators';
 
@@ -11,6 +11,7 @@ import { map, shareReplay, tap } from 'rxjs/operators';
 export class InfoService {
   API_URL = environment.apiUrl;
   sevaList: ISevaList[] = [];
+  photoList : IUploadPhoto[] = [];
   aboutTemple: IAboutTemple[] = [];
   latestEventList: ILatestEventsDtl[] = [];
   constructor(private http: HttpClient) {}
@@ -38,6 +39,14 @@ export class InfoService {
       ),
       shareReplay(),
       tap((data) => (this.latestEventList = data))
+    );
+  }
+
+  getPhotosList() {
+    if (this.photoList.length > 0) return of(this.photoList);
+    return this.http.get<IUploadPhoto[]>(this.API_URL + 'common/uploaded-photo').pipe(
+      shareReplay(),
+      tap((data) => (this.photoList = data))
     );
   }
 

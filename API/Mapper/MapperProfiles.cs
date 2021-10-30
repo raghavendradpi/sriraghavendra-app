@@ -12,6 +12,7 @@ namespace API.Mapper
             // THESE are important method created for the mapping of the data from source to target or revers
             CreateMap<AradhanaDetails, Contact>();
             CreateMap<LatestEventsDTO, LatestEvents>();
+            CreateMap<PhotoDto, Photo>();
             CreateMap<UserClarificationDTO, UserClarification>().ReverseMap();
             CreateMap<GoogleJsonWebSignature.Payload, UserDetails>();
         }

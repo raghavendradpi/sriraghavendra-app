@@ -41,6 +41,15 @@ namespace API.Controllers
             return data;
         }
 
+        [HttpGet("uploaded-photo")]
+        public async Task<List<Photo>> GetUploadedPhotoAsync()
+        {
+            string sheetName = CommonItem.UploadPhotoSheet;
+            var service = _genericRepository.GoogleServiceIntialise();
+            var data = await _genericRepository.GetListAsync<Photo>(sheetName, service);
+            data = data.OrderByDescending(l => l.EventDate).ToList();
+            return data;
+        }
 
         [HttpGet("about-guru")]
         public async Task<List<AboutGuru>> GetAboutGuruAsync()
