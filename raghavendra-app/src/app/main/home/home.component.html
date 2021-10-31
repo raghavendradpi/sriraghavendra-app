@@ -28,6 +28,7 @@
 <!-- Upcoming EVENTS in temple -->
 <section *ngIf="eventInfo$ | async as eventInfo" class="latest-updates">
   <h2 class="heading-secondary pd-sm">Latest Updates</h2>
+  <a (click)="onSeeAll()" class="see-all mr-rt-sm">View All</a>
   <div *ngFor="let event of eventInfo" class="moveFromBottom card">
     <div class="event__date">
       <span> {{ event.day }}</span>

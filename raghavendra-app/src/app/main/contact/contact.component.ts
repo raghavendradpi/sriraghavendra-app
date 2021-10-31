@@ -14,12 +14,16 @@ import { Subscription } from 'rxjs';
 export class ContactComponent implements OnInit {
   contactForm: FormGroup;
   subscription = new Subscription();
+  templeInfo = {};
 
   constructor(private fb: FormBuilder, private infoService: InfoService, private toastrService: ToastrService) {}
 
   ngOnInit(): void {
     this.QuestionForm();
+    
+    this.subscription = this.infoService.getTempleContactInfo().subscribe((data) => (this.templeInfo = data));
   }
+
   QuestionForm() {
     this.contactForm = this.fb.group({
       fullName: ['', Validators.required],

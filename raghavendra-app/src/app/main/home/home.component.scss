@@ -54,6 +54,20 @@
 }
 
 //// Latest Updates Section
+.see-all {
+  display: flex;
+  justify-content: flex-end;
+  font-size: $medium-font-size;
+  color: map-get($color-primary, medium);
+  transition: all 0.5s;
+  text-transform: capitalize;
+}
+
+.see-all:hover,
+.see-all:active {
+  transform: scale(1.02) ;
+}
+
 .card {
   box-shadow: $box-shawdow-large;
   background-color: $color-white;

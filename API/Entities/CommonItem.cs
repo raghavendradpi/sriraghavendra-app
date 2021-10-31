@@ -15,6 +15,11 @@ namespace API.Entities
         public static readonly string UploadPhotorange = $"{UploadPhotoSheet}!" + "A:E";
         public static readonly string SevaUpdateSheet = "seva-list";
         public static readonly string SevaUpdaterange = $"{SevaUpdateSheet}!" + "A:C";
+
+        public static readonly string TempleInfoSheet = "temple-info";
+        public static readonly string TempleInforange = $"{TempleInfoSheet}!" + "A:B";
+
+
         ///Aradhana Sheet Dynamic Information with different spreadsheet.
         public static readonly string AradhanaSheet = "aradhana-collection";
         public static readonly string Aradhanarange = $"{AradhanaSheet}!" + "A:N";

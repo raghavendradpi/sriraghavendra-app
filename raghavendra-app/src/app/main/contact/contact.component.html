@@ -1,6 +1,6 @@
 <!-- Contact Information of the temple -->
 <section class="contact">
-  <h2 class="heading-secondary">Conact Info</h2>
+  <h2 class="heading-secondary">Contact Info</h2>
   <p class="text-align-center paragraph">If you have queries,you can call us ,email us or post your question below</p>
   <div class="contact__info">
     <div class="contact__info__details contact__info__phone">
@@ -9,9 +9,8 @@
           <use xlink:href="assets/svg/sprite.svg#icon-phone"></use>
         </svg>
       </span>
-      <span>Phone</span>
-      <span>9025069920</span>
-      <span>9442533900</span>
+      <span class="mr-tp-sm"><b>Phone</b></span>
+      <span *ngFor="let phone of templeInfo['Phone']">{{ phone }}</span>
     </div>
 
     <div class="contact__info__details contact__info__frequency">
@@ -20,9 +19,8 @@
           <use xlink:href="assets/svg/sprite.svg#icon-clock"></use>
         </svg>
       </span>
-      <span>Visiting Hours</span>
-      <span>Morning 9: 00 AM to 12 :00 PM</span>
-      <span>Evening 5:00 PM to 8: 00 PM</span>
+      <span class="mr-tp-sm"><b>Visiting Hours</b></span>
+      <span *ngFor="let timings of templeInfo['Visiting Hours']">{{ timings }}</span>
     </div>
 
     <div class="contact__info__details contact__info__email">
@@ -31,9 +29,9 @@
           <use xlink:href="assets/svg/sprite.svg#icon-mail2"></use>
         </svg>
       </span>
-      <span>Email</span>
-      <span>sriraghavendraswamydpi@gmail.com </span>
-      <span> raghunthansbi@gmail.com</span>
+      <span class="mr-tp-sm"><b>Email</b></span>
+
+      <span *ngFor="let email of templeInfo['Email']">{{ email }}</span>
     </div>
   </div>
 </section>
@@ -42,10 +40,7 @@
   <div class="address">
     <h3 class="heading-tertiary">Address</h3>
     <p>
-      Sri Raghavendra swamy mutt <br />
-      14/5 Nethaji bye pass road <br />
-      Bharathipuram <br />
-      Dharmapuri -636701
+      {{ templeInfo['Address'][0] }}
     </p>
   </div>
   <div class="map">

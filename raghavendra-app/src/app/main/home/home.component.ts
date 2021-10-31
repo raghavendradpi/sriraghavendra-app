@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { InfoService } from '@app-services/info.service';
 import { ILatestEventsDtl } from '@app/models/IUser';
 import { Observable } from 'rxjs';
+import { map} from 'rxjs/operators';
 
 @Component({
   selector: 'app-home',
@@ -18,6 +19,11 @@ export class HomeComponent implements OnInit {
   constructor(private infoService: InfoService, private router: Router) {}
 
   ngOnInit(): void {
+    //Taking the 5 items in an array
+    this.eventInfo$ = this.infoService.getLatestEvents().pipe(map((el) => el.slice(0, 5)));
+  }
+
+  onSeeAll() {
     this.eventInfo$ = this.infoService.getLatestEvents();
   }
 

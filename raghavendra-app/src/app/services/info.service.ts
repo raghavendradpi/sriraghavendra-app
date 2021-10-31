@@ -11,9 +11,10 @@ import { map, shareReplay, tap } from 'rxjs/operators';
 export class InfoService {
   API_URL = environment.apiUrl;
   sevaList: ISevaList[] = [];
-  photoList : IUploadPhoto[] = [];
+  photoList: IUploadPhoto[] = [];
   aboutTemple: IAboutTemple[] = [];
   latestEventList: ILatestEventsDtl[] = [];
+  templeObject = {};
   constructor(private http: HttpClient) {}
 
   getLatestEvents() {
@@ -47,6 +48,14 @@ export class InfoService {
     return this.http.get<IUploadPhoto[]>(this.API_URL + 'common/uploaded-photo').pipe(
       shareReplay(),
       tap((data) => (this.photoList = data))
+    );
+  }
+
+  getTempleContactInfo() {
+    if (Object.keys(this.templeObject).length !== 0) return of(this.templeObject);
+    return this.http.get(this.API_URL + 'common/temple-info').pipe(
+      shareReplay(),
+      tap((data) => (this.templeObject = data))
     );
   }
 

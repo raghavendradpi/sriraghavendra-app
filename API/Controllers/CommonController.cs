@@ -41,6 +41,16 @@ namespace API.Controllers
             return data;
         }
 
+        [HttpGet("temple-info")]
+        public async Task<Dictionary<string, List<string>>> GetTempleInfoAsync()
+        {
+            string sheetName = CommonItem.TempleInfoSheet;
+            var service = _genericRepository.GoogleServiceIntialise();
+            var data = await _genericRepository.GetListAsync<TempleDTO>(sheetName, service);
+            var data1 = data.GroupBy(t => t.Title).ToDictionary(k => k.Key, k => k.Select( k=> k.Description).ToList());
+            return data1;
+        }
+
         [HttpGet("uploaded-photo")]
         public async Task<List<Photo>> GetUploadedPhotoAsync()
         {
