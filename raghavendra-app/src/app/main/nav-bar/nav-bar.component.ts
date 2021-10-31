@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { GoogleSigninService } from '@app-accounts/google-signin.service';
+import { InfoService } from '@app-services/info.service';
 import { IUser } from '@app/models/IUser';
 import { Subscription } from 'rxjs';
 
@@ -12,6 +13,7 @@ import { Subscription } from 'rxjs';
 export class NavBarComponent implements OnInit {
   socialUser: Partial<IUser>;
   subscription = new Subscription();
+  templeInfo = {};
 
   status = {
     isLoggedin: false,
@@ -19,7 +21,7 @@ export class NavBarComponent implements OnInit {
     isAdmin: false,
   };
 
-  constructor(private googleSignInService: GoogleSigninService, private router: Router) {}
+  constructor(private googleSignInService: GoogleSigninService, private infoService: InfoService, private router: Router) {}
 
   ngOnInit(): void {
     //getting the user information to show in header
@@ -29,6 +31,8 @@ export class NavBarComponent implements OnInit {
       this.socialUser = user;
       this.status.isLoggedin = user != null;
     });
+
+    this.subscription = this.infoService.getTempleContactInfo().subscribe((data) => (this.templeInfo = data));
   }
 
   onLogin() {
