@@ -122,7 +122,7 @@ $bp-smallest: 450px;
   width: fit-content;
 
   svg {
-    @include svg($svg-filter-theme, 2rem);
+    @include svg($svg-filter-theme, 1rem);
   }
 
   &:hover,

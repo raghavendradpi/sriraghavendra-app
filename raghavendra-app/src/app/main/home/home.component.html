@@ -2,7 +2,7 @@
 
 <marquee class="text-scroll pd-tp-md" *ngIf="eventInfo$ | async as eventInfodata" width="100%" direction="left">
   <b>{{ eventInfodata[0].title }}</b>
-     {{ eventInfodata[0].description }} 
+  {{ eventInfodata[0].description }}
 </marquee>
 <main class="home">
   <div class="home__info pd-lt-lg">
@@ -28,7 +28,7 @@
 <!-- Upcoming EVENTS in temple -->
 <section *ngIf="eventInfo$ | async as eventInfo" class="latest-updates">
   <h2 class="heading-secondary pd-sm">Latest Updates</h2>
-  <a (click)="onSeeAll()" class="see-all mr-rt-sm">View All</a>
+  <a (click)="onSeeAll()" class="see-all mr-rt-xl">View All</a>
   <div *ngFor="let event of eventInfo" class="moveFromBottom card">
     <div class="event__date">
       <span> {{ event.day }}</span>
@@ -50,7 +50,7 @@
     <img appReveal class="moveFromBottom" src="assets/images/sriraghavendra-about.png" alt="Sri Raghavendra Temple Dharmapuri" />
     <div class="temple__info mr-tp-md">
       <p class="paragraph moveInRight">
-        Sri Raghavendra Swamy Temple is located in Bharathipuram Dharmapuri,constructed on January 1st 1995, we are celebrating Aradhana for past
+        Sri Raghavendra Swamy Temple is located in Bharathipuram Dharmapuri,constructed on February 1995, we are celebrating Aradhana for past
         {{ sinceConstruction }} years.
       </p>
       <p class="paragraph moveInRight">

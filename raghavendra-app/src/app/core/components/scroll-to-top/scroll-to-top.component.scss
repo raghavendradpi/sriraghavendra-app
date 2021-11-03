@@ -2,8 +2,8 @@
 
 .scroll-to-top {
   position: fixed;
-  bottom: 15px;
-  right: 15px;
+  bottom: 80px;
+  right: 0;
   opacity: 0;
   transition: all 0.2s ease-in-out;
 }
@@ -16,6 +16,8 @@
   background-color: none !important;
   border: none;
   outline: none;
+  display: inline-block;
+  width :6rem;
 
   svg {
     @include svg($svg-filter-theme, 5rem);

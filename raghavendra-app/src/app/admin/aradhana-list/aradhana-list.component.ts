@@ -77,7 +77,6 @@ export class AradhanaListComponent implements OnInit {
     this.isFormActive = false;
   }
 
-
   //Passing the router paramter and using the activated route to get the latest router url and appending the path
   // along with it also we have used the navigation params for the navigation to the Profile COmponent
   onNavigate(user: IUserInfo) {
