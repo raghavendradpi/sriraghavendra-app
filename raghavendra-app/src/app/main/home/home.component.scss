@@ -27,6 +27,8 @@
 
     @media only screen and (max-width: $bp-small) {
       grid-template-columns: 1fr;
+      margin: auto;
+      transform: translateY(-2rem);
     }
   }
 
@@ -44,6 +46,7 @@
 
       @media only screen and (max-width: $bp-small) {
         transform: translateY(0);
+        width: 60vw;
       }
     }
   }
@@ -119,17 +122,25 @@
 
   @media only screen and (max-width: $bp-small) {
     grid-template-columns: 1fr;
-    grid-template-rows: 1fr 1fr;
+    grid-template-rows: 0.5fr 1fr;
   }
 
-  img {
+  .about-image {
     align-self: start;
+
+    @media only screen and (max-width: $bp-small) {
+      align-self: end;
+    }
   }
 
   .temple__info {
     align-self: flex-start;
 
     @media only screen and (max-width: $bp-small) {
+      margin: 2rem;
+    }
+
+    @media only screen and (max-width: $bp-smallest) {
       margin: 2rem;
     }
   }
