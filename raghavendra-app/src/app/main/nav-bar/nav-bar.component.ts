@@ -13,7 +13,7 @@ import { Subscription } from 'rxjs';
 export class NavBarComponent implements OnInit {
   socialUser: Partial<IUser>;
   subscription = new Subscription();
-  templeInfo = {};
+  templeInfo ;
 
   status = {
     isLoggedin: false,

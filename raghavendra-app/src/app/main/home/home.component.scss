@@ -122,6 +122,10 @@
     grid-template-rows: 1fr 1fr;
   }
 
+  img {
+    align-self: start;
+  }
+
   .temple__info {
     align-self: flex-start;
 

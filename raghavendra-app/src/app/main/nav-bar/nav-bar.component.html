@@ -3,7 +3,7 @@
   <div class="navigation__info">
     <img [routerLink]="['home']" class="navigation__logo" src="assets/images/sriraghavendra-logo.png" />
 
-    <div class="navigation__contact">
+    <div *ngIf="templeInfo" class="navigation__contact">
       <label> Contact Number </label>
       <label class="navigation__contact--number">{{ templeInfo['Phone'][0] }}</label>
     </div>

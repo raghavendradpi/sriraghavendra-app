@@ -36,7 +36,7 @@
   </div>
 </section>
 <!-- Location Information of the temple -->
-<section appReveal class="location moveFromBottom pd-lg">
+<section class="location moveFromBottom pd-lg">
   <div class="address">
     <h3 class="heading-tertiary">Address</h3>
     <p>
@@ -49,7 +49,7 @@
 </section>
 
 <!-- Form for the user to post their Query or Suggestions -->
-<section appReveal class="contact__card moveFromBottom">
+<section  class="contact__card moveFromBottom">
   <h2 class="heading-secondary">Contact Form</h2>
   <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="contact__form">
     <app-text-input class="full-length" formControlName="fullName" [isOptional]="false" [label]="'Full Name'"></app-text-input>
